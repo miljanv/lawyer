@@ -96,6 +96,7 @@ export default function Home() {
   const [historyPageSize] = useState(5);
   const [historyTotalPages, setHistoryTotalPages] = useState(1);
   const [historyTotalItems, setHistoryTotalItems] = useState(0);
+  const [loadingHistory, setLoadingHistory] = useState(true);
 
   const uploadUnlocked = useMemo(
     () => uploadPassword === UPLOAD_PASSWORD,
@@ -135,27 +136,32 @@ export default function Home() {
     page = historyPage,
     category = historyCategory,
   ): Promise<void> {
-    const params = new URLSearchParams({
-      page: String(page),
-      pageSize: String(historyPageSize),
-    });
-    if (category && category !== "Sve") {
-      params.set("category", category);
+    setLoadingHistory(true);
+    try {
+      const params = new URLSearchParams({
+        page: String(page),
+        pageSize: String(historyPageSize),
+      });
+      if (category && category !== "Sve") {
+        params.set("category", category);
+      }
+
+      const response = await fetch(`${API_URL}/qa-history?${params.toString()}`);
+      if (!response.ok) throw new Error("Failed");
+      const data = (await response.json()) as {
+        items: QaHistoryItem[];
+        categories: string[];
+        pagination: { page: number; totalPages: number; totalItems: number };
+      };
+
+      setHistory(data.items ?? []);
+      setHistoryCategories(data.categories ?? ["Sve"]);
+      setHistoryPage(data.pagination?.page ?? page);
+      setHistoryTotalPages(data.pagination?.totalPages ?? 1);
+      setHistoryTotalItems(data.pagination?.totalItems ?? 0);
+    } finally {
+      setLoadingHistory(false);
     }
-
-    const response = await fetch(`${API_URL}/qa-history?${params.toString()}`);
-    if (!response.ok) throw new Error("Failed");
-    const data = (await response.json()) as {
-      items: QaHistoryItem[];
-      categories: string[];
-      pagination: { page: number; totalPages: number; totalItems: number };
-    };
-
-    setHistory(data.items ?? []);
-    setHistoryCategories(data.categories ?? ["Sve"]);
-    setHistoryPage(data.pagination?.page ?? page);
-    setHistoryTotalPages(data.pagination?.totalPages ?? 1);
-    setHistoryTotalItems(data.pagination?.totalItems ?? 0);
   }
 
   useEffect(() => {
@@ -192,6 +198,7 @@ export default function Home() {
         });
       } finally {
         setLoadingDocuments(false);
+        setLoadingHistory(false);
       }
     }
 
@@ -433,7 +440,8 @@ export default function Home() {
                       </Label>
                       <select
                         id="history-category"
-                        className="h-8 rounded-md border border-border bg-background px-2 text-sm"
+                        className="h-8 rounded-md border border-border bg-background px-2 text-sm disabled:cursor-not-allowed disabled:opacity-60"
+                        disabled={loadingHistory}
                         value={historyCategory}
                         onChange={async (event) => {
                           const nextCategory = event.target.value;
@@ -449,7 +457,25 @@ export default function Home() {
                       </select>
                     </div>
 
-                    {history.length === 0 ? (
+                    {loadingHistory ? (
+                      <div
+                        className="flex min-h-[160px] flex-col items-center justify-center gap-3 rounded-lg border border-dashed border-border bg-muted/20 py-10"
+                        role="status"
+                        aria-live="polite"
+                        aria-busy="true"
+                      >
+                        <Loader2
+                          className="size-9 animate-spin text-[var(--brand)]"
+                          aria-hidden
+                        />
+                        <p className="text-sm font-medium text-foreground">
+                          Učitavanje istorije…
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          Sačekaj trenutak dok se primeni filter.
+                        </p>
+                      </div>
+                    ) : history.length === 0 ? (
                       <p className="text-sm text-muted-foreground">
                         Još nema istorije pitanja.
                       </p>
@@ -484,7 +510,7 @@ export default function Home() {
                     <div className="mt-4 flex items-center justify-between gap-3">
                       <Button
                         variant="outline"
-                        disabled={historyPage <= 1}
+                        disabled={historyPage <= 1 || loadingHistory}
                         onClick={async () => {
                           const next = historyPage - 1;
                           await fetchHistory(next, historyCategory);
@@ -497,7 +523,9 @@ export default function Home() {
                       </p>
                       <Button
                         variant="outline"
-                        disabled={historyPage >= historyTotalPages}
+                        disabled={
+                          historyPage >= historyTotalPages || loadingHistory
+                        }
                         onClick={async () => {
                           const next = historyPage + 1;
                           await fetchHistory(next, historyCategory);
