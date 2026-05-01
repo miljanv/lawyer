@@ -1,0 +1,12 @@
+.agents
+.skills-lock.json
+
+backend/node_modules
+frontend/node_modules
+frontend/.next
+backend/.next
+backend/dist
+backend/src/__pycache__/
+
+frontend/.env
+backend/.env
