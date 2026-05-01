@@ -11,11 +11,13 @@ app.use(cors());
 app.use(express.json());
 app.use(documentRoutes);
 
+const PORT = Number(process.env.PORT) || 3001;
+
 async function startServer(): Promise<void> {
   await initDb();
 
-  app.listen(3001, () => {
-    console.log("Server running on 3001");
+  app.listen(PORT, () => {
+    console.log(`Server running on ${PORT}`);
   });
 }
 
