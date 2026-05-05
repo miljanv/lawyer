@@ -1,0 +1,31 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="720" rx="28" fill="#020617"/>
+  <text x="80" y="104" fill="#F8FAFC" font-size="42" font-family="Arial" font-weight="700">Kako radi Pravko</text>
+  <rect x="80" y="164" width="340" height="420" rx="22" fill="#111827"/>
+  <rect x="106" y="204" width="288" height="168" rx="16" fill="#1E293B"/>
+  <rect x="132" y="236" width="236" height="18" rx="9" fill="#334155"/>
+  <rect x="132" y="266" width="196" height="18" rx="9" fill="#334155"/>
+  <rect x="132" y="296" width="150" height="18" rx="9" fill="#334155"/>
+  <rect x="132" y="326" width="124" height="18" rx="9" fill="#334155"/>
+  <text x="112" y="422" fill="#A5B4FC" font-size="24" font-family="Arial" font-weight="700">1. Otpremi dokument</text>
+  <text x="112" y="456" fill="#CBD5E1" font-size="18" font-family="Arial">PDF ugovor ili propis ulazi</text>
+  <text x="112" y="482" fill="#CBD5E1" font-size="18" font-family="Arial">u bazu i spreman je za analizu.</text>
+  <rect x="470" y="164" width="340" height="420" rx="22" fill="#111827"/>
+  <rect x="496" y="204" width="288" height="168" rx="16" fill="#1E293B"/>
+  <rect x="524" y="240" width="230" height="32" rx="10" fill="#312E81"/>
+  <rect x="524" y="286" width="230" height="32" rx="10" fill="#0F766E"/>
+  <text x="514" y="422" fill="#A5B4FC" font-size="24" font-family="Arial" font-weight="700">2. AI analiza i uskladjenost</text>
+  <text x="502" y="456" fill="#CBD5E1" font-size="18" font-family="Arial">Sistem detektuje rizike,</text>
+  <text x="502" y="482" fill="#CBD5E1" font-size="18" font-family="Arial">predloge i relevantne clnove zakona.</text>
+  <rect x="860" y="164" width="340" height="420" rx="22" fill="#111827"/>
+  <rect x="886" y="204" width="288" height="168" rx="16" fill="#1E293B"/>
+  <rect x="918" y="236" width="220" height="112" rx="12" fill="#0F172A" stroke="#334155"/>
+  <text x="946" y="302" fill="#E2E8F0" font-size="46" font-family="Arial" font-weight="700">PDF</text>
+  <text x="892" y="422" fill="#A5B4FC" font-size="24" font-family="Arial" font-weight="700">3. Izvezi PDF i potpisi</text>
+  <text x="892" y="456" fill="#CBD5E1" font-size="18" font-family="Arial">Finalizuj nacrt i preuzmi</text>
+  <text x="892" y="482" fill="#CBD5E1" font-size="18" font-family="Arial">dokumenat spreman za pregled.</text>
+  <path d="M430 374H458L444 360" stroke="#818CF8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M430 374L444 388" stroke="#818CF8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M820 374H848L834 360" stroke="#22D3EE" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M820 374L834 388" stroke="#22D3EE" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

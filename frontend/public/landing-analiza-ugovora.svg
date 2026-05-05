@@ -1,0 +1,46 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="720" rx="28" fill="#020617"/>
+  <rect x="28" y="28" width="1224" height="664" rx="24" fill="#0F172A"/>
+  <rect x="52" y="52" width="236" height="616" rx="16" fill="#111827"/>
+  <text x="76" y="92" fill="#A5B4FC" font-size="24" font-family="Arial" font-weight="700">PRAVKO</text>
+  <rect x="70" y="122" width="200" height="44" rx="12" fill="#1E1B4B"/>
+  <text x="88" y="150" fill="#E0E7FF" font-size="16" font-family="Arial">Analiza ugovora</text>
+  <rect x="70" y="178" width="200" height="40" rx="10" fill="#1F2937"/>
+  <text x="88" y="203" fill="#CBD5E1" font-size="15" font-family="Arial">Generisanje ugovora</text>
+  <rect x="70" y="228" width="200" height="40" rx="10" fill="#1F2937"/>
+  <text x="88" y="253" fill="#CBD5E1" font-size="15" font-family="Arial">Dokumenta</text>
+  <rect x="320" y="70" width="900" height="110" rx="16" fill="#111827"/>
+  <text x="352" y="112" fill="#F8FAFC" font-size="34" font-family="Arial" font-weight="700">Analiza ugovora</text>
+  <rect x="898" y="96" width="290" height="52" rx="14" fill="#065F46"/>
+  <circle cx="926" cy="122" r="8" fill="#10B981"/>
+  <text x="946" y="128" fill="#D1FAE5" font-size="18" font-family="Arial" font-weight="700">Analiza zavrsena</text>
+  <rect x="320" y="202" width="430" height="194" rx="16" fill="#111827"/>
+  <text x="348" y="242" fill="#C7D2FE" font-size="22" font-family="Arial" font-weight="700">Dokument</text>
+  <rect x="348" y="262" width="374" height="106" rx="12" fill="#1F2937"/>
+  <text x="368" y="306" fill="#F1F5F9" font-size="20" font-family="Arial">UGOVOR_O_ZAKUPU.pdf</text>
+  <text x="368" y="336" fill="#94A3B8" font-size="16" font-family="Arial">31 stranica " uploadovan danas</text>
+  <rect x="772" y="202" width="448" height="466" rx="16" fill="#111827"/>
+  <text x="802" y="244" fill="#F8FAFC" font-size="24" font-family="Arial" font-weight="700">Rezultat analize</text>
+  <rect x="802" y="264" width="388" height="56" rx="10" fill="#312E81"/>
+  <text x="822" y="298" fill="#E0E7FF" font-size="18" font-family="Arial">Visok rizik: kaznene klauzule nejasne</text>
+  <rect x="802" y="334" width="388" height="56" rx="10" fill="#0F766E"/>
+  <text x="822" y="368" fill="#CCFBF1" font-size="18" font-family="Arial">Predlog: precizirati rokove placanja</text>
+  <rect x="802" y="404" width="388" height="56" rx="10" fill="#374151"/>
+  <text x="822" y="438" fill="#E2E8F0" font-size="18" font-family="Arial">Uskladjenost: 84%</text>
+  <text x="802" y="500" fill="#A5B4FC" font-size="20" font-family="Arial" font-weight="700">Izvodi iz baze propisa</text>
+  <rect x="802" y="520" width="388" height="124" rx="12" fill="#1F2937"/>
+  <text x="822" y="552" fill="#CBD5E1" font-size="16" font-family="Arial">" ZOO cl. 124: Obaveze ugovornih strana</text>
+  <text x="822" y="580" fill="#CBD5E1" font-size="16" font-family="Arial">" ZOO cl. 262: Naknada stete i penali</text>
+  <text x="822" y="608" fill="#CBD5E1" font-size="16" font-family="Arial">" Zakon o zastiti potrosaca</text>
+  <rect x="320" y="418" width="430" height="250" rx="16" fill="#111827"/>
+  <text x="348" y="454" fill="#C7D2FE" font-size="22" font-family="Arial" font-weight="700">Kljucni metrike</text>
+  <rect x="348" y="476" width="122" height="86" rx="12" fill="#1E293B"/>
+  <text x="382" y="516" fill="#E2E8F0" font-size="32" font-family="Arial" font-weight="700">31</text>
+  <text x="364" y="542" fill="#94A3B8" font-size="14" font-family="Arial">stranica</text>
+  <rect x="482" y="476" width="122" height="86" rx="12" fill="#1E293B"/>
+  <text x="512" y="516" fill="#E2E8F0" font-size="32" font-family="Arial" font-weight="700">84%</text>
+  <text x="498" y="542" fill="#94A3B8" font-size="14" font-family="Arial">uskldj.</text>
+  <rect x="616" y="476" width="106" height="86" rx="12" fill="#1E293B"/>
+  <text x="650" y="516" fill="#E2E8F0" font-size="32" font-family="Arial" font-weight="700">5</text>
+  <text x="633" y="542" fill="#94A3B8" font-size="14" font-family="Arial">rizika</text>
+</svg>

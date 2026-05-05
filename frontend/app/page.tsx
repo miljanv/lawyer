@@ -4,6 +4,8 @@ import { ChangeEvent, FormEvent, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import {
+  ArrowRight,
+  BadgeCheck,
   ChevronLeft,
   ChevronRight,
   FileUp,
@@ -16,7 +18,10 @@ import {
   Download,
   Menu,
   MessageCircleQuestion,
+  Rocket,
+  ShieldCheck,
   Sparkles,
+  WandSparkles,
 } from "lucide-react";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -1395,6 +1400,217 @@ export function DashboardPage({
   );
 }
 
+function LandingPage({ onEnter }: { onEnter: () => void }) {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -left-24 top-12 h-72 w-72 rounded-full bg-indigo-500/30 blur-3xl" />
+        <div className="absolute right-0 top-32 h-80 w-80 rounded-full bg-fuchsia-500/20 blur-3xl" />
+        <div className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-cyan-500/20 blur-3xl" />
+      </div>
+
+      <main className="relative mx-auto flex w-full max-w-7xl flex-col gap-14 px-6 pb-16 pt-8 md:px-10">
+        <header className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur">
+          <div className="flex items-center gap-3">
+            <Image
+              src="/logo-tr.png"
+              alt="Pravko"
+              width={38}
+              height={38}
+              className="rounded-xl object-contain"
+              priority
+            />
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] text-indigo-200">
+                PRAVKO AI
+              </p>
+              <p className="text-sm font-semibold text-white">Pravni turbo alat</p>
+            </div>
+          </div>
+          <Button
+            type="button"
+            onClick={onEnter}
+            className="group bg-indigo-500 text-white hover:bg-indigo-400"
+          >
+            Udji
+            <ArrowRight className="ml-2 size-4 transition group-hover:translate-x-1" />
+          </Button>
+        </header>
+
+        <section className="grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="space-y-6">
+            <p className="inline-flex items-center gap-2 rounded-full border border-indigo-300/30 bg-indigo-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-indigo-100">
+              <Rocket className="size-3.5" />
+              MODERNO. BRZO. NADBUDŽENO.
+            </p>
+            <h1 className="text-4xl font-black leading-tight text-white md:text-6xl">
+              Lawyer app koja izgleda{" "}
+              <span className="bg-gradient-to-r from-indigo-300 via-fuchsia-300 to-cyan-300 bg-clip-text text-transparent">
+                brutalno dobro
+              </span>{" "}
+              i radi još bolje.
+            </h1>
+            <p className="max-w-2xl text-base text-slate-300 md:text-lg">
+              Upload dokumenata, pravna pitanja, analiza i generisanje ugovora u
+              jednom workflow-u. Sve na jednom mestu, sa UI-em koji izgleda kao
+              premium SaaS.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Button
+                type="button"
+                onClick={onEnter}
+                className="h-11 bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-6 text-white hover:from-indigo-400 hover:to-fuchsia-400"
+              >
+                Udji u aplikaciju
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => {
+                  const section = document.getElementById("kako-radi");
+                  section?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                className="h-11 border-white/30 bg-white/5 px-6 text-slate-100 hover:bg-white/10"
+              >
+                Pogledaj kako radi
+              </Button>
+            </div>
+          </div>
+
+          <div className="relative">
+            <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 to-white/[0.03] p-4 shadow-2xl shadow-indigo-900/40 backdrop-blur-xl">
+              <div className="mb-3 flex items-center justify-between rounded-xl border border-white/10 bg-slate-900/70 px-3 py-2">
+                <p className="text-xs font-semibold text-slate-300">
+                  Dashboard Preview
+                </p>
+                <p className="text-xs text-emerald-300">LIVE</p>
+              </div>
+              <div className="grid gap-3 md:grid-cols-2">
+                {[
+                  "Q&A nad zakonima",
+                  "Analiza ugovora",
+                  "AI dorada nacrta",
+                  "PDF export jednim klikom",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-xl border border-white/10 bg-slate-900/70 p-3"
+                  >
+                    <p className="text-sm text-white">{item}</p>
+                    <div className="mt-2 h-1.5 w-full rounded-full bg-slate-800">
+                      <div className="h-1.5 w-4/5 rounded-full bg-gradient-to-r from-indigo-400 to-cyan-400" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="kako-radi" className="space-y-4">
+          <h2 className="text-2xl font-bold text-white md:text-3xl">
+            Kako aplikacija funkcionise
+          </h2>
+          <div className="grid gap-4 md:grid-cols-3">
+            {[
+              {
+                icon: WandSparkles,
+                title: "1. Ubacis dokumente",
+                text: "Otpremis PDF i odmah ulaze u bazu za pretragu i razumevanje konteksta.",
+              },
+              {
+                icon: ShieldCheck,
+                title: "2. AI uradi analizu",
+                text: "Dobijas pravnu procenu, rizike i relevantne izvode iz propisa.",
+              },
+              {
+                icon: BadgeCheck,
+                title: "3. Zavrsis posao brze",
+                text: "Generises nacrt ugovora, doradis i skines PDF bez gubljenja vremena.",
+              },
+            ].map((step) => (
+              <article
+                key={step.title}
+                className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur"
+              >
+                <step.icon className="mb-3 size-5 text-indigo-300" />
+                <h3 className="mb-2 text-lg font-semibold text-white">{step.title}</h3>
+                <p className="text-sm text-slate-300">{step.text}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="grid gap-4 pt-2 lg:grid-cols-3">
+            {[
+              {
+                title: "Analiza ugovora",
+                src: "/landing-analiza-ugovora.svg",
+                alt: "Prikaz analize ugovora u aplikaciji",
+              },
+              {
+                title: "AI diff dorada",
+                src: "/landing-diff-prikaz.svg",
+                alt: "Prikaz izmena nakon AI dorade ugovora",
+              },
+              {
+                title: "Kako radi flow",
+                src: "/landing-kako-radi-flow.svg",
+                alt: "Prikaz koraka rada aplikacije",
+              },
+            ].map((preview) => (
+              <article
+                key={preview.title}
+                className="overflow-hidden rounded-2xl border border-white/15 bg-white/5"
+              >
+                <div className="border-b border-white/10 px-4 py-2">
+                  <p className="text-sm font-semibold text-slate-100">{preview.title}</p>
+                </div>
+                <div className="relative aspect-[16/9]">
+                  <Image
+                    src={preview.src}
+                    alt={preview.alt}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="grid gap-4 lg:grid-cols-2">
+          <div className="rounded-2xl border border-indigo-300/20 bg-indigo-400/10 p-5">
+            <p className="text-sm font-semibold uppercase tracking-wider text-indigo-200">
+              Why people click
+            </p>
+            <p className="mt-2 text-2xl font-black text-white">
+              Brzina, stil i rezultat u jednoj platformi.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-fuchsia-300/20 bg-fuchsia-400/10 p-5">
+            <p className="text-sm font-semibold uppercase tracking-wider text-fuchsia-200">
+              Finalni korak
+            </p>
+            <Button
+              type="button"
+              onClick={onEnter}
+              className="mt-2 h-11 bg-white text-slate-950 hover:bg-slate-100"
+            >
+              Udji i pokreni celu app
+            </Button>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+}
+
 export default function Home() {
-  return <DashboardPage initialSection="pitanja" />;
+  const [enteredApp, setEnteredApp] = useState(false);
+
+  if (enteredApp) {
+    return <DashboardPage initialSection="pitanja" />;
+  }
+
+  return <LandingPage onEnter={() => setEnteredApp(true)} />;
 }
