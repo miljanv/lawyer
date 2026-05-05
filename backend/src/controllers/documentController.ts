@@ -2,10 +2,19 @@ import { Request, Response } from "express";
 
 import {
   answerQuestion,
+  DocumentKind,
   listDocuments,
   listQaHistory,
   uploadDocument,
 } from "../services/documentService";
+
+function parseDocumentKind(raw: unknown): DocumentKind {
+  if (raw === "ugovor") {
+    return "ugovor";
+  }
+
+  return "zakon";
+}
 
 export async function uploadDocumentController(req: Request, res: Response): Promise<void> {
   try {
@@ -14,7 +23,8 @@ export async function uploadDocumentController(req: Request, res: Response): Pro
       return;
     }
 
-    await uploadDocument(req.file.path, req.file.originalname);
+    const kind = parseDocumentKind(req.body?.kind);
+    await uploadDocument(req.file.path, req.file.originalname, kind);
     res.json({ success: true });
   } catch (error) {
     console.error(error);

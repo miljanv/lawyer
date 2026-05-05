@@ -1,4 +1,4 @@
-function cleanPdfText(text: string): string {
+export function cleanPdfText(text: string): string {
   return text
     .replace(/--\s*\d+\s+of\s+\d+\s*--/gi, " ")
     .replace(/^\s*\.\s*$/gm, " ")

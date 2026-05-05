@@ -31,6 +31,11 @@ export const db = new Pool({
 
 export async function initDb(): Promise<void> {
   await db.query(`
+    ALTER TABLE documents
+    ADD COLUMN IF NOT EXISTS kind TEXT NOT NULL DEFAULT 'zakon'
+  `);
+
+  await db.query(`
     CREATE TABLE IF NOT EXISTS qa_history (
       id BIGSERIAL PRIMARY KEY,
       question TEXT NOT NULL,

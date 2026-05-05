@@ -14,8 +14,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Lawyer AI Assistant",
-  description: "Moderna web aplikacija za pretragu i Q&A nad pravnim PDF dokumentima.",
+  title: {
+    default: "Pravko",
+    template: "%s · Pravko",
+  },
+  description:
+    "Pravko — pravna aplikacija za zakone, pitanja i odgovore, analizu i generisanje ugovora po pravu Republike Srbije.",
+  applicationName: "Pravko",
+  icons: {
+    icon: "/logo-tr.png",
+    apple: "/logo-tr.png",
+  },
 };
 
 export default function RootLayout({
@@ -25,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="sr"
       className={`${nunito.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className={`${nunito.className} min-h-full flex flex-col`}>

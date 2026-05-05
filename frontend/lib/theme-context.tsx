@@ -15,14 +15,16 @@ const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>(() => {
     if (typeof window === "undefined") return "light";
-    const saved = window.localStorage.getItem("lawyer.theme");
+    const saved =
+      window.localStorage.getItem("pravko.theme") ??
+      window.localStorage.getItem("lawyer.theme");
     return saved === "dark" ? "dark" : "light";
   });
 
   useEffect(() => {
     const root = document.documentElement;
     root.classList.toggle("dark", theme === "dark");
-    window.localStorage.setItem("lawyer.theme", theme);
+    window.localStorage.setItem("pravko.theme", theme);
   }, [theme]);
 
   const value = useMemo<ThemeContextValue>(

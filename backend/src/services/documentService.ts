@@ -6,7 +6,7 @@ import { askAI, getEmbedding } from "../embeddings";
 import { chunkText } from "../parser";
 
 type SourceItem = { content: string };
-type DocumentListItem = { id: number; name: string };
+type DocumentListItem = { id: number; name: string; kind: string };
 type QaHistoryListItem = {
   id: number;
   question: string;
@@ -50,7 +50,13 @@ function isLikelyFragmentStart(text: string): boolean {
   return startsWithLowercase || startsWithConnector;
 }
 
-export async function uploadDocument(filePath: string, fileName: string): Promise<void> {
+export type DocumentKind = "zakon" | "ugovor";
+
+export async function uploadDocument(
+  filePath: string,
+  fileName: string,
+  kind: DocumentKind = "zakon",
+): Promise<void> {
   const buffer = fs.readFileSync(filePath);
   const parser = new PDFParse({ data: buffer });
 
@@ -58,8 +64,8 @@ export async function uploadDocument(filePath: string, fileName: string): Promis
     const pdfData = await parser.getText();
 
     const docRes = await db.query(
-      "INSERT INTO documents(name) VALUES($1) RETURNING id",
-      [fileName],
+      "INSERT INTO documents(name, kind) VALUES($1, $2) RETURNING id",
+      [fileName, kind],
     );
 
     const docId: number = docRes.rows[0].id;
@@ -90,7 +96,8 @@ export async function answerQuestion(
 SELECT dc.content, dc.document_id, d.name AS document_name
 FROM document_chunks dc
 LEFT JOIN documents d ON d.id = dc.document_id
-ORDER BY embedding <-> $1::vector
+WHERE COALESCE(d.kind, 'zakon') = 'zakon'
+ORDER BY dc.embedding <-> $1::vector
 LIMIT 25
 `,
     [queryEmbeddingStr],
@@ -125,7 +132,7 @@ VALUES ($1, $2, $3, $4)
 export async function listDocuments(): Promise<DocumentListItem[]> {
   const result = await db.query(
     `
-SELECT id, name
+SELECT id, name, kind
 FROM documents
 ORDER BY id DESC
 LIMIT 100
